@@ -9,10 +9,11 @@
 ### 项目根目录下的json
 * 项目根目录下的json一般有app.json和project.config.json。
 * app.json就是当前小程序的全局配置，包括小程序的全部页面路径，界面表现，网络超时事件，tab表现等。
-* app.json 配置项列表
-  | 属性        | 类型          | 必填        | 描述        |
-  | :---------- | :---------- | :----------: | :---------- |
-  | pages           | StringArray | 是 | 设置页面路径，数组第一项就是初始页面,数组的每一项都是[路径+文件名] |
+* app.json 配置项列表:
+
+  | 属性  | 类型  | 必填  | 描述  |
+  | :------ | :------ | :------ | :------ |
+  | pages           | StringArray | 是 | 设置页面路径，数组第一项就是初始页面，数组的每一项都是 路径+文件名 |
   | window          | Object      | 否 | 设置默认的页面表现 |
   | tabBar          | Object      | 否 | 设置底部 tab 的表现 |
   | networkTimeout  | Object      | 否 | 设置网络超时时间 |
@@ -41,7 +42,60 @@
 #### 2. 多了 wx:if 这样的属性和 {{}} 表达式
 * 以前的前端开发流程中，都是用js操作DOM，做用户的交互效果，现代前端一般都是用mvvm开发模式，把渲染和逻辑分开，js只需要管理状态，通过模板语法来描述状态和页面结构的关系，小程序的框架就是这个思路。
 * 我们可以通过 {{}} 将数据绑定到页面上，还可以通过if/else、for等来控制页面显示。
-* 吐槽： 微信小程序想学react和vue，结果却不是双向绑定数据，数据更新到页面得手动setData，给开发带来麻烦。
+  * 数据绑定
+  ```
+    <!--wxml-->
+    <view> {{message}} </view>
+    // page.js
+    Page({
+      data: {
+        message: 'Hello World!'
+      }
+    })
+  ```
+  * 列表渲染
+  ```
+    <!--wxml-->
+    <view wx:for="{{array}}" wx:for-item="item"> {{item}} </view>
+    // page.js
+    Page({
+      data: {
+        array: [1, 2, 3, 4, 5]
+      }
+    })
+  ```
+
+  * 条件渲染
+  ```
+    <!--wxml-->
+    <view wx:if="{{flag == 'WEBVIEW'}}"> WEBVIEW </view>
+    <view wx:elif="{{flag == 'APP'}}"> APP </view>
+    <view wx:else="{{flag == 'AppService'}}"> AppService </view>
+    // page.js
+    Page({
+      data: {
+        flag: 'AppService'
+      }
+    })
+  ```
+
+  * 模板 
+  ```
+  <!--wxml-->
+  <template name="Names">
+    <view>
+      FirstName: {{FirstName}}, LastName: {{LastName}}
+    </view>
+  </template>
+
+  <template is="Names" data="{{...staffName}}"></template>
+  // page.js
+  Page({
+    data: {
+      staffName: {FirstName: 'Jim', LastName: 'Hu'}
+    }
+  })
+  ```
 
 ## WXSS 样式
 ### 和wxml一样，也是微信对css做了封装
@@ -139,17 +193,15 @@ Page({
 ```
 
 #### 3. 使用bind+事件名在wxml上绑定事件
-* wxml
 ```
+<!-- wxml -->
 <view>{{ msg }}</view>
 <button bindtap="clickMe">点击我</button>
-```
-* js
-```
+// page.js
 Page({
   clickMe: function() {
     this.setData({ msg: "Hello World" })
   }
 })
 ```
-* **注意**：数据的更新必须使用 setData() 函数，直接通过赋值来修改数据在页面上是没有效果的。
+* **注意**: 视图层的数据必须使用 this.setData() 函数更新，直接通过 this.data 赋值来修改数据是不会反馈到视图层的，且会造成视图层和逻辑层数据不一致。
