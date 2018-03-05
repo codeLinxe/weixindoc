@@ -9,6 +9,7 @@
 ### 项目根目录下的json
 * 项目根目录下的json一般有app.json和project.config.json。
 * app.json就是当前小程序的全局配置，包括小程序的全部页面路径，界面表现，网络超时事件，tab表现等。
+<<<<<<< HEAD
 * app.json 配置项列表:
 
   | 属性  | 类型  | 必填  | 描述  |
@@ -18,7 +19,19 @@
   | tabBar          | Object      | 否 | 设置底部 tab 的表现 |
   | networkTimeout  | Object      | 否 | 设置网络超时时间 |
   | debug           | Boolean     | 否 | 设置是否开启 debug 模式 |
+=======
+* app.json 配置项列表：
+>>>>>>> 04f2f92a65ffe4c94fc9b17dbc9de8b8ed13aee4
 
+  | 属性 | 类型 | 描述 |
+  | :---------- | :---------- | :---------- |
+  | pages           | StringArray    | 设置页面路径，数组第一项就是初始页面，数组的每一项都是 路径+文件名 |
+  | window          | Object         | 设置默认的页面表现 |
+  | tabBar          | Object         | 设置底部 tab 的表现 |
+  | networkTimeout  | Object         | 设置网络超时时间 |
+  | debug           | Boolean        | 设置是否开启 debug 模式 |
+
+* 除了pages是必填的，其他都不是必填的。
 * [app.json详细配置](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html)
 
 * project.config.json是工具配置，方便保存你的个性化设置，比如编辑器的界面颜色，编译配置等等。方便你在另外的电脑上使用个性化配置。
@@ -104,6 +117,7 @@
 #### 2. 提供了全局的样式和局部的样式
 * 在根目录下的app.wxss会作用于当前小程序的所有页面，局部page.wxss仅对当前页面生效。
 #### 3. 只支持部分css选择器（挺少的，程序员何苦为难程序员 TAT）
+
   | 选择器 | 样例 | 样例描述 |
   | :---------- | :---------- | :---------- |
   | .class           | .intro         | 选择所有拥有 class="intro" 的组件 |
@@ -204,4 +218,8 @@ Page({
   }
 })
 ```
+<<<<<<< HEAD
 * **注意**: 视图层的数据必须使用 this.setData() 函数更新，直接通过 this.data 赋值来修改数据是不会反馈到视图层的，且会造成视图层和逻辑层数据不一致。
+=======
+* **注意**：数据的更新必须使用 setData() 函数，直接通过赋值来修改数据在页面上是没有效果的。
+>>>>>>> 04f2f92a65ffe4c94fc9b17dbc9de8b8ed13aee4
