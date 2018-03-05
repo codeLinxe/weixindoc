@@ -19,6 +19,7 @@
   | networkTimeout  | Object         | 设置网络超时时间 |
   | debug           | Boolean        | 设置是否开启 debug 模式 |
 
+* 除了pages是必填的，其他都不是必填的。
 * [app.json详细配置](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html)
 
 * project.config.json是工具配置，方便保存你的个性化设置，比如编辑器的界面颜色，编译配置等等。方便你在另外的电脑上使用个性化配置。
