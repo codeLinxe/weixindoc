@@ -10,13 +10,13 @@
 * 项目根目录下的json一般有app.json和project.config.json。
 * app.json就是当前小程序的全局配置，包括小程序的全部页面路径，界面表现，网络超时事件，tab表现等。
 * app.json 配置项列表
-  | 属性 | 类型 | 必填 | 描述 |
+  | 属性        | 类型          | 必填        | 描述        |
   | :---------- | :---------- | :----------: | :---------- |
-  | pages | StringArray | 是 | 设置页面路径，数组第一项就是初始页面,数组的每一项都是[路径+文件名] |
-  | window | Object | 否 | 设置默认的页面表现 |
-  | tabBar | Object | 否 | 设置底部 tab 的表现 |
-  | networkTimeout | Object | 否 | 设置网络超时时间 |
-  | debug | Boolean | 否 | 设置是否开启 debug 模式 |
+  | pages           | StringArray | 是 | 设置页面路径，数组第一项就是初始页面,数组的每一项都是[路径+文件名] |
+  | window          | Object      | 否 | 设置默认的页面表现 |
+  | tabBar          | Object      | 否 | 设置底部 tab 的表现 |
+  | networkTimeout  | Object      | 否 | 设置网络超时时间 |
+  | debug           | Boolean     | 否 | 设置是否开启 debug 模式 |
 
 * [app.json详细配置](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html)
 
